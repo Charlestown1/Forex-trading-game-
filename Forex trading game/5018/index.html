@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Forex Simulator</title>
+<link rel="stylesheet" href="style.css"></head><body>
+<header>
+<div class="logo">FOREX SIMULATOR <small id="mkt">OPEN</small></div>
+<div class="k"><span>GBP/USD</span><b id="hp">-</b></div>
+<div class="k"><span>Balance</span><b id="hb">-</b></div>
+<div class="k"><span>Equity</span><b id="he">-</b></div>
+<div class="k"><span>Floating P/L</span><b id="hf">-</b></div>
+<div class="k"><span>Free margin</span><b id="hm">-</b></div>
+<button class="btn" id="reset">Reset game</button>
+</header>
+<main>
+<section><h2>Chart · GBP/USD <span id="cond" class="tag"></span></h2>
+<canvas id="cv"></canvas>
+<div class="row" style="margin-top:8px">
+<button class="btn" id="run">PAUSE MARKET</button><button class="btn" id="zi">Zoom +</button><button class="btn" id="zo">Zoom −</button>
+<button class="btn" id="snd">🔊 Sound ON</button>
+<select id="diff" style="width:auto"><option value="easy">EASY</option><option value="normal">NORMAL</option><option value="hard">HARD</option></select></div>
+<div class="row" style="margin-top:8px"><span>Bid <b id="bid"></b></span><span>Ask <b id="ask"></b></span><span>Spread <b id="spr"></b></span></div></section>
+
+<section><h2>Trade panel</h2>
+<div class="row"><label>Lot size<input id="lots" type="number" step="0.01" min="0.01" value="0.10" inputmode="decimal"></label>
+<label>Stop loss (pips)<input id="sl" type="number" min="1" value="10" inputmode="decimal"></label>
+<label>Take profit (pips)<input id="tp" type="number" min="1" value="20" inputmode="decimal"></label></div>
+<div class="chips" id="chips"></div>
+<div class="row"><button class="big buy" id="buy">BUY GBP/USD</button><button class="big sell" id="sell">SELL GBP/USD</button></div>
+<div class="grid3" style="margin-top:10px"><div class="st"><span>Used margin</span><b id="um"></b></div><div class="st"><span>Leverage</span><b>1:100</b></div><div class="st"><span>1 pip</span><b id="pv"></b></div></div>
+<h2 style="margin-top:14px">News</h2><div id="nextNews" class="y"></div><div class="log" id="newsLog"></div></section>
+
+<section class="wide"><h2>Open positions</h2><div class="tbl"><table><thead><tr><th>Symbol</th><th>Type</th><th>Lots</th><th>Entry</th><th>Current</th><th>SL</th><th>TP</th><th>Time</th><th>P/L</th><th></th></tr></thead><tbody id="pos"></tbody></table></div></section>
+
+<section class="wide"><h2>Statistics</h2><div class="grid3" id="stats"></div></section>
+
+<section><h2>Trade history</h2><div class="tbl"><table><thead><tr><th>#</th><th>Type</th><th>Lots</th><th>Entry</th><th>Exit</th><th>P/L</th><th>Reason</th><th>Time</th></tr></thead><tbody id="hist"></tbody></table></div></section>
+
+<section><h2>Risk calculator (simulator only)</h2>
+<div class="row"><label>Balance $<input id="rb" type="number" value="1000"></label><label>Risk %<input id="rp" type="number" value="1" step="0.1"></label><label>SL pips<input id="rs" type="number" value="20"></label></div>
+<p>Risk amount: <b id="ra"></b><br>Recommended lot: <b id="rl" class="y"></b><br>Maximum risk: <b id="rm"></b></p></section>
+</main>
+<div id="toasts"></div>
+<div id="blown"><div><h1 class="r">ACCOUNT BLOWN</h1><p>Your virtual balance reached $0.</p><button class="btn" id="restart">RESTART ACCOUNT</button></div></div>
+<script src="script.js"></script></body></html>
